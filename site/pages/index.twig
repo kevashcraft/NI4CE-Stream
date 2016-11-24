@@ -1,0 +1,71 @@
+{% extends 'templates/master.twig' %}
+
+{% set title = site.title %}
+
+{% block article %}
+<section>
+  <h1>The NI4CE Repeater Stream</h1>
+  <div>
+    <p>Hello and welcome to the live stream of the <a href="http://ni4ce.org" title="The Nice Repeater System" target="_blank">NI4CE Repeater System</a> in West Central Florida.</p>
+    <p>This is an unofficial stream setup by <a href="https://www.km4fpa.com" title="Kevin in Auburndale" target="_blank">KM4FPA</a> to provide an easy method for amateurs to monitor the nice repeaters from anywhere and to listen to their own transmissions in an effort to improve signal quality.</p>
+  </div>
+</section>
+<section>
+  <h1>Initial Release</h1>
+  <div>
+    <p>The stream is still being configured to improve the audio quality. Right now there are pauses in the audio due to the squelch control; if the squelch is fully open the audio is consistent, but also really noisy.</p>
+    <p>Over the next two weeks I hope to iron out the squelch issue and adapt to any affects the use of this site may have on the application.</p>
+  </div>
+</section>
+<section>
+  <h1>How It Works</h1>
+  <div>
+    <p>The stream is created from a Raspberry Pi and DVB-T SDR connected to a 70cm j-pole antenna.</p>
+    <div class="row-by-two">
+      <div>
+        <img src="/images/raspberry-pi-sdr.jpg">
+      </div>
+      <div>
+        <img src="/images/70cm-jpole-antenna.jpg">
+      </div>
+    </div>
+    <p>The Raspberry Pi runs <a href="https://www.ffmpeg.org/" title="World's Best Audio/Video Encoder" target="_blank">ffmpeg</a> from <a href="https://archlinuxarm.org/" title="A Simple and Updated Linux Distribution" target="_blank">ArchLinux ARM</a>. The counter-part, ffserver, was originally ran on the Pi but was moved to a <a href="https://www.digitalocean.com/" title="SSD Servers" target="_blank">DigitalOcean</a> server running <a href="https://www.centos.org" title="The CentOS Project">CentOS Linux</a> for this application.</p>
+    <p>The command to stream:</p>
+    <pre>rtl_fm -f 442.8M -M fm -s 12.5k -l 150 -t 1 | ffmpeg -ar 12.5k -f s16le -ac 1 -i pipe:0  -acodec libmp3lame -ab 128k -bufsize 0 http://127.0.0.1:44282/feed.ffm</pre>
+    <small>Note that the frequency is set to 442.8MHz instead of 442.825 because this sdr is cheap an not entirely accurate; I had to look at the spectrum using <a href="http://gqrx.dk/" target="_blank">gqrx</a> and see where this device actually received the transmission. For day-to-day projects I found a <a href="http://www.rtl-sdr.com/buy-rtl-sdr-dvb-t-dongles/" title="RTL Silver SDR" target="_blank">more accurate device made by rtl-sdr.com</a> that's fantastic.</small>
+    <p>The server configuration "stream.conf":</p>
+    <pre>
+      HTTPPort 44282
+      HTTPBindAddress 0.0.0.0
+      MaxHTTPConnections 2000
+      MaxClients 1000
+      MaxBandwidth 1000
+      CustomLog -
+
+      &lt;Feed feed.ffm&gt;
+        File /tmp/feed.ffm
+        FileMaxSize 8M
+        ACL allow 127.0.0.1
+      &lt;/Feed&gt;
+
+      &lt;Stream stream.mp3&gt;
+        Feed feed.ffm
+        Format mp2
+        AudioCodec libmp3lame
+        AudioBitRate 128
+        AudioChannels 1
+        AudioSampleRate 44100
+        NoVideo
+      &lt;/Stream&gt;
+    </pre>
+    <p>and the command to run the server:</p>
+    <pre>ffserver -f stream.conf</pre>
+  </div>
+</section>
+<section>
+  <h1>Feedback</h1>
+  <div>
+    <p>If you have any further questions, comments, concerns, or good ideas please <a href="mailto:kevin@ni4ce-stream.com" title="Email Kevin" target="_blank">email me at kevin@ni4ce-stream.com</a>.</p>
+  </div>
+</section>
+{% endblock %}

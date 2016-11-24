@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ site.description }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {{ favicons }}
+
+  <link rel="canonical" href="{{ site.url }}">
+  <link rel="author" href="{{ site.author }}">
+  <link rel="icon" sizes="16x16 32x32" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="{{ abspath }}/styles/master.css">
+
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <header>
+    {% include 'partials/header.twig' %}
+  </header>
+  <article>
+    {% block article %}{% endblock %}
+  </article>
+  <footer>
+    {% include 'partials/footer.twig' %}
+  </footer>
+  <script src="{{ abspath }}/scripts/master.js"></script>
+</body>
+</html>

@@ -1,3 +1,14 @@
+#live_label {
+  display: none;
+  color: $live-label-color;
+  font-size: 1rem;
+  font-weight: bold;
+
+  .show {
+    display: inline-block;
+  }
+}
+
 #play_button {
   display: inline-block;
   width: 0;
@@ -46,14 +57,15 @@
   border-color: transparent;
 }
 #play_button.active:after {
+  border-color: transparent;
   content: '';
   opacity: 1;
   width: 10px;
   height: 16px;
-  background: rgba(0,0,0,.05);
+  background: rgba(21,101,192 ,1);
   position: absolute;
   right: 1px;
   top: -8px;
-  border-left: 4px solid rgba(0,0,0,.05);
+  border-left: 4px solid rgba(21,101,192 ,1);
   box-shadow: inset 6px 0 0 0 #f9f9f9;
 }

@@ -1,1 +1,12 @@
+vendor/
+bower_components/
+node_modules/
+dist/
+semantic/
+
+composer.lock
+composer.phar
+
+app/config.json
+
 \.fuse_hidden*

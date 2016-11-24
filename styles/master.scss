@@ -1,0 +1,26 @@
+// Colors
+$accent-color: rgba(38,166,154 ,1);
+$accent-color-light: rgba(224,242,241 ,1);
+$accent-color-dark: rgba(0,137,123 ,1);
+$background-color: #FFF;
+$gray: #828282;
+$live-label-color: rgba(21,101,192 ,1);
+$text-color: #000;
+$primary-color: rgba(96,125,139 ,1);
+// Fonts
+$font-stack: Helvetica;
+// Sizes
+$font-size: 24px;
+$header-height: 50px;
+$max-body-width: 1000px;
+$max-header-width: 1200px;
+$max-section-width: 750px;
+
+
+
+
+@import 'reset';
+@import 'base';
+@import 'site';
+@import 'elements';
+@import 'classes';
