@@ -9,4 +9,6 @@ composer.phar
 
 app/config.json
 
+data.json
+
 \.fuse_hidden*

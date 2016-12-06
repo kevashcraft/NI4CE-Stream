@@ -37,7 +37,7 @@ gulp.task('favicons', ['data'], function() {
     developerName: data.site.author,
     developerURL: data.site.url,
     background: "#020307",
-    path: "favicons/",
+    path: "/favicons/",
     url: data.site.url,
     display: "standalone",
     orientation: "portrait",
