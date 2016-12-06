@@ -25,7 +25,7 @@
   /*left: 2px;*/
   cursor: pointer;
 
-  :before {
+  &:before {
     content: '';
     position: absolute;
     top: -15px;
@@ -39,24 +39,24 @@
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
   }
-  :after {
+  &:after {
     content: '';
     opacity: 0;
     transition: opacity 0.6s;
     -webkit-transition: opacity 0.6s;
     -moz-transition: opacity 0.6s;
   }
-  :hover:before,
-  :focus:before {
+  &:hover:before,
+  &:focus:before {
     border-color: rgba(21,101,192 ,1);
     transform: scale(1.1);
     -webkit-transform: scale(1.1);
     -moz-transform: scale(1.1);
   }
-  .active {
+  &.active {
     border-color: transparent;
   }
-  .active:after {
+  &.active:after {
     border-color: transparent;
     content: '';
     opacity: 1;
