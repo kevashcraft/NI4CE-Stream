@@ -25,9 +25,6 @@ var NS = {
 play_button.addEventListener('click', NS.toggle);
 
 setTimeout(function(){
-  console.log("NS.play_label",NS.play_label);
   if (!NS.playing)
     NS.play_label.classList.add('show');
 }, 2500);
-
-
