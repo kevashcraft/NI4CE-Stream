@@ -46,7 +46,7 @@ body > header {
       transition: all 1s ease;
       opacity: 0;
 
-      .show {
+      &.show {
         opacity: 1;
       }
     }

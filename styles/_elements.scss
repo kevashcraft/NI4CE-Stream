@@ -4,7 +4,7 @@
   font-size: 1rem;
   font-weight: bold;
 
-  .show {
+  &.show {
     display: inline-block;
   }
 }
@@ -25,47 +25,48 @@
   /*left: 2px;*/
   cursor: pointer;
 
-}
-#play_button:before {
-  content: '';
-  position: absolute;
-  top: -15px;
-  left: -23px;
-  bottom: -15px;
-  right: -7px;
-  border-radius: 50%;
-  border: 2px solid rgba(0,0,0,.05);
-  z-index: 2;
-  transition: all 0.3s;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-}
-#play_button:after {
-  content: '';
-  opacity: 0;
-  transition: opacity 0.6s;
-  -webkit-transition: opacity 0.6s;
-  -moz-transition: opacity 0.6s;
-}
-#play_button:hover:before, #play_button:focus:before {
-  border-color: rgba(21,101,192 ,1);
-  transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  -moz-transform: scale(1.1);
-}
-#play_button.active {
-  border-color: transparent;
-}
-#play_button.active:after {
-  border-color: transparent;
-  content: '';
-  opacity: 1;
-  width: 10px;
-  height: 16px;
-  background: rgba(21,101,192 ,1);
-  position: absolute;
-  right: 1px;
-  top: -8px;
-  border-left: 4px solid rgba(21,101,192 ,1);
-  box-shadow: inset 6px 0 0 0 #f9f9f9;
+  :before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -23px;
+    bottom: -15px;
+    right: -7px;
+    border-radius: 50%;
+    border: 2px solid rgba(0,0,0,.05);
+    z-index: 2;
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+  }
+  :after {
+    content: '';
+    opacity: 0;
+    transition: opacity 0.6s;
+    -webkit-transition: opacity 0.6s;
+    -moz-transition: opacity 0.6s;
+  }
+  :hover:before,
+  :focus:before {
+    border-color: rgba(21,101,192 ,1);
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+  }
+  .active {
+    border-color: transparent;
+  }
+  .active:after {
+    border-color: transparent;
+    content: '';
+    opacity: 1;
+    width: 10px;
+    height: 16px;
+    background: rgba(21,101,192 ,1);
+    position: absolute;
+    right: 1px;
+    top: -8px;
+    border-left: 4px solid rgba(21,101,192 ,1);
+    box-shadow: inset 6px 0 0 0 #f9f9f9;
+  }
 }
