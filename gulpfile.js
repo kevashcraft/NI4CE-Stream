@@ -32,9 +32,9 @@ gulp.task('data', function(cb) {
 
 gulp.task('favicons', ['data'], function() {
   gulp.src("graphics/ni4ce-stream.png").pipe(favicons({
-    appName: "My App",
+    appName: data.site.title,
     appDescription: data.site.description,
-    developerName: data.site.title,
+    developerName: data.site.author,
     developerURL: data.site.url,
     background: "#020307",
     path: "favicons/",
