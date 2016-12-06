@@ -9,12 +9,12 @@
 
   <link rel="canonical" href="{{ site.url }}">
   <link rel="author" href="{{ site.author }}">
-  <link rel="icon" sizes="16x16 32x32" href="/favicon.ico">
   <link rel="stylesheet" type="text/css" href="{{ abspath }}/styles/master.css">
 
   {% block head %}{% endblock %}
 </head>
 <body>
+  {% include 'partials/init_script.twig' %}
   <header>
     {% include 'partials/header.twig' %}
   </header>
