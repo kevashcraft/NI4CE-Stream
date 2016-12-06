@@ -161,31 +161,37 @@ body > footer {
   html {
     /*font-size: 21px;*/
   }
-  section {
-    padding: 1em;
+  body > article {
+    section {
+
+      padding: 1em;
+    }
+    h1 {
+      font-size: 1.5rem;
+    }
+    pre {
+      margin-left: 1em;
+      padding: 1em;
+      overflow-y: auto;
+    }
   }
-  section > header h1 {
-    font-size: 1.5rem;
-  }
-  section pre {
-    margin-left: 1em;
-    padding: 1em;
-    overflow-y: auto;
-  }
-  footer > div {
-    padding: 45px 15px 100px;
-    flex-direction: column;
-  }
-  footer h1 {
-    font-size: 1rem;
-  }
-  footer p {
-    font-size: .8rem;
-  }
-  footer ul {
-    font-size: .8rem;
+  body > footer {
+    > div {
+      padding: 45px 15px 100px;
+      flex-direction: column;
+    }
+    h1 {
+      font-size: 1rem;
+    }
+    p {
+      font-size: .8rem;
+    }
+    ul {
+      font-size: .8rem;
+    }
   }
 }
+
 @media (max-width: 600px) {
   #live_label { display: none !important; }
   #play_label { display: none !important; }
